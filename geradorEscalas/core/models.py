@@ -7,6 +7,7 @@ class Militar(models.Model):
     nome = models.CharField(max_length=100)
     posto = models.CharField(max_length=50)
     funcao= models.CharField(max_length=50)
+    servico = models.CharField(max_length=50, default='Não Definido')
     ordem_semana = models.IntegerField()
     ordem_fds = models.IntegerField()
     telefone = models.BigIntegerField()
@@ -25,7 +26,7 @@ class Dispensa(models.Model):
     motivo = models.TextField()
 
     def __str__(self):
-        return f"Dispensa de {self.militar.nome} ({self.data_inicio} - {self.data_fim})"
+        return f"Dispensa de {self.posto} {self.militar.nome}: ({self.data_inicio} - {self.data_fim})"
 
 
 class Configuracao(models.Model):
